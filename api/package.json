@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Foro de peliculas, musica y arquitectura",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "peliculas",
+    "musica",
+    "arquitectura"
+  ],
+  "author": "Enzo Holgado (enzoholgadodev@gmail.com - @ZoenDEV - https://github.com/Zoen-DEV)",
+  "license": "ISC"
+}
