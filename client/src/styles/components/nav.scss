@@ -1,0 +1,99 @@
+nav {
+  @include flex(row, space-evenly, center);
+  width: 80%;
+  margin: auto;
+  padding: 5px 10px;
+  border-bottom: 2px solid $color-teal-600;
+  .logo_container {
+    width: 20%;
+  }
+  ul {
+    @include flex(row, space-evenly, center);
+    list-style: none;
+    width: 60%;
+    li {
+      transition: 0.3s;
+      button{
+        all: unset;
+      }
+      .link {
+        text-decoration: none;
+        font-weight: 700;
+        color: $color-gray-50;
+        font-size: 1.1em;
+        transition: 0.3s;
+      }
+      .link:hover{
+        color: $color-teal-600;
+      }
+    }
+    li:hover{
+      transform: scale(1.1);
+    }
+  }
+  .search_container {
+    @include flex(row, flex-end, center);
+    width: 20%;
+    gap: 5px;
+    input {
+      width: 90%;
+      animation: ease searchInput 2s;
+      background-color: $color-gray-900;
+      padding: 3px 6px;
+      outline: none;
+      border: 2px solid $color-gray-900;
+      border-radius: 3px 0 0 3px;
+      color: $color-gray-50;
+    }
+    input:focus{
+      border-color: $color-teal-600;
+    }
+    .lupa{
+      font-size: 1.2em;
+    }
+  }
+  .search_container:hover{
+    .lupa{
+      color: $color-teal-600;
+    }
+  }
+  .login_link{
+    white-space: nowrap;
+    margin-left: 20px;
+    text-decoration: none;
+    color: $color-gray-50;
+    &:hover{
+      color: $color-teal-500;
+    }
+  }
+  .menu_btn{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  nav{
+    justify-content: space-between;
+    ul{
+      display: none;
+    }
+    .search_container{
+      display: none;
+    }
+    .login_link{
+      display: none;
+    }
+    .menu_btn{
+      display: block;
+    }
+  }
+}
+
+@keyframes searchInput {
+  0% {
+    width: 0;
+  }
+  80% {
+    width: 90%;
+  }
+}

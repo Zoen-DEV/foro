@@ -1,0 +1,181 @@
+.Home {
+  @include flex(column, center, center);
+  padding: 50px 0;
+  gap: 50px;
+  header {
+    @include flex(column, flex-end, center);
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0 0 10px 0 $color-gray-900;
+    .image {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      filter: brightness(80%);
+    }
+  }
+  .mouse {
+    width: 50px;
+    height: 90px;
+    border: 3px solid $color-teal-800;
+    border-radius: 60px;
+    position: fixed;
+    top: 85%;
+    left: 93%;
+    animation: mouse 4s infinite;
+    box-shadow: 0 0 10px 0 $color-gray-900;
+    transition: 0.5s;
+    &::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $color-teal-700;
+      border-radius: 50%;
+      opacity: 1;
+      animation: wheel 2s infinite;
+      transition: 0.5s;
+      -webkit-animation: wheel 2s infinite;
+      &:hover {
+        transform: scale(1.08);
+      }
+    }
+    &:hover {
+      transform: scale(1.08);
+    }
+  }
+  section {
+    @include flex(column, space-evenly, center);
+    width: 75%;
+    min-height: 100vh;
+    h1 {
+      border-bottom: 2px solid $color-teal-600;
+      text-align: center;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 2.2em;
+    }
+    .cards_container {
+      @include flex(row, space-evenly, center);
+      flex-wrap: wrap;
+      gap: 20px;
+      .category {
+        width: 30%;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 5px;
+        span {
+          @include flex(row, center, center);
+          z-index: 100;
+          position: absolute;
+          background: linear-gradient(
+            to bottom,
+            $color-shadow-100 50%,
+            transparent 100%
+          );
+          width: 22.5%;
+          height: 32.5%;
+          font-family: sans-serif;
+          font-weight: 700;
+          font-size: 2em;
+          color: $color-amber-500;
+          animation: ease categorySpan 2s;
+          display: none;
+        }
+        .image {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          object-fit: cover;
+          transform: scale(1.05);
+          transition: transform 0.3s;
+        }
+        &:hover {
+          span {
+            display: flex;
+          }
+          .image {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Home {
+    header {
+      margin-top: 100px;
+      width: 95%;
+      overflow: hidden;
+      .image {
+        object-fit: cover;
+      }
+    }
+    .mouse {
+      margin-top: 100px;
+      position: relative;
+      top: auto;
+      left: auto;
+    }
+    section {
+      width: 90%;
+      .cards_container {
+        width: 100%;
+        .category {
+          width: 100%;
+          span {
+            display: flex;
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes categorySpan {
+  0% {
+    height: 10%;
+    opacity: 0;
+  }
+  80% {
+    height: 32.5%;
+    opacity: 1;
+  }
+}
+
+@keyframes mouse {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 10px 0 $color-gray-900;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px 0 $color-gray-800;
+  }
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 10px 0 $color-gray-900;
+  }
+}
+
+@keyframes wheel {
+  to {
+    opacity: 0;
+    top: 40px;
+  }
+}
+
+@-webkit-keyframes wheel {
+  to {
+    opacity: 0;
+    top: 40px;
+  }
+}
